@@ -1,19 +1,56 @@
 import requests
 import bs4
+import configparser
+
+
+def ops():
+    properties = configparser.ConfigParser()
+    properties.read('C:/workspace_python/config.ini')    
+    serviceKey = properties.get('DATAGO', 'SERVICE_KEY')
+
+    # url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade"
+
+    # params = {
+    #     'serviceKey': serviceKey,
+    #     'LAWD_CD': '11110',
+    #     'DEAL_YMD': '202301'
+    # }
+
+    url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade?" + "serviceKey=" + serviceKey + "&LAWD_CD=11110&DEAL_YMD=202301"
+
+    headers = {
+        'Cookie': 'ROUTEID=.HTTP1'
+    }
+
+    # response = requests.request("GET", url, headers=headers, params=params)
+
+    response = requests.request("GET", url, headers=headers)
+
+    print(response.text)
+
 
 def apartment():
-    url = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent'
+    properties = configparser.ConfigParser()
+    properties.read('C:/workspace_python/config.ini')    
+    serviceKey = properties.get('DATAGO', 'SERVICE_KEY')
+
+    url = 'http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade'
     params = {
-        'serviceKey': '',
+        'serviceKey': serviceKey,
         'LAWD_CD': '11110', 'DEAL_YMD': '201512'}
     response = requests.get(url, params=params)
     print(response.content)
+    print(response.text)
 
 
 def shortsell():
+    properties = configparser.ConfigParser()
+    properties.read('C:/workspace_python/config.ini')    
+    serviceKey = properties.get('DATAGO', 'SERVICE_KEY')
+
     url = 'http://openapi.onbid.co.kr/openapi/services/KamcoPblsalThingInquireSvc/getKamcoPbctCltrList'
     params = {
-        'serviceKey': '',
+        'serviceKey': serviceKey,
         'numOfRows': '10', 'pageNo': '1',
         'DPSL_MTD_CD': '0001',
         'CTGR_HIRK_ID': '10000',
@@ -53,6 +90,8 @@ def auction():
 
 
 def auction_detail():
+
+
     cookies = {'WMONID': 'GeKwMfYFCp6', 'daepyoSiguCd': '', 'mvmPlaceSidoCd': '',
                                     'mvmPlaceSiguCd': '', 'rd1Cd': '', 'rd2Cd': '', 'realVowel': '35207_45207',
                                     'roadPlaceSidoCd': '', 'roadPlaceSiguCd': '', 'vowelSel': '35207_45207',
@@ -82,13 +121,13 @@ def auction_detail():
 
     url = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHRent'
     params = {
-        'serviceKey': '',
         'LAWD_CD': '11110', 'DEAL_YMD': '202301'}
     response = requests.get(url, params=params)
     print(response.content)
     print(response.content)
 
 
-auction_detail()
+# auction_detail()
 # shortsell()
 # apartment()
+ops()
