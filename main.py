@@ -86,6 +86,7 @@ def auction_detail():
         'LAWD_CD': '11110', 'DEAL_YMD': '202301'}
     response = requests.get(url, params=params)
     print(response.content)
+    print(response.content)
 
 
 auction_detail()
