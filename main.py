@@ -1,6 +1,11 @@
 import requests
 import bs4
 import configparser
+from detachedhouse.detached_house_rent import DetachedHouseRentApi
+from standorg.stand_org import StandOrgApi
+
+from comm.service_key import CommProperty
+import xml.etree.ElementTree as et
 
 
 def ops():
@@ -130,4 +135,21 @@ def auction_detail():
 # auction_detail()
 # shortsell()
 # apartment()
-ops()
+# ops()
+
+def main():
+    CommProperty()
+
+    api_call = DetachedHouseRentApi()
+    # api_call = StandOrgApi()
+
+    st = api_call.rent_cost()
+    tree = et.fromstring(st)
+    bb = tree.find('response')
+
+    print('a')
+
+
+
+if __name__ == '__main__':
+    main()
