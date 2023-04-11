@@ -38,7 +38,6 @@ def apartment():
     properties = configparser.ConfigParser()
     properties.read('C:/workspace_python/config.ini')    
     serviceKey = properties.get('DATAGO', 'SERVICE_KEY')
-    serviceKey = 'L4gYnZoZLFJ1j8ndrPu178xFf68Qq1jjVvYl3WPLQe7ulWqrScchcRURtE+hC/LNCvX+9K6a2C2kU1cymBniwQ=='
 
     url = 'http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade'
     params = {
@@ -53,7 +52,6 @@ def shortsell():
     properties = configparser.ConfigParser()
     properties.read('C:/workspace_python/config.ini')    
     serviceKey = properties.get('DATAGO', 'SERVICE_KEY')
-    serviceKey = 'L4gYnZoZLFJ1j8ndrPu178xFf68Qq1jjVvYl3WPLQe7ulWqrScchcRURtE+hC/LNCvX+9K6a2C2kU1cymBniwQ=='
 
     url = 'http://openapi.onbid.co.kr/openapi/services/KamcoPblsalThingInquireSvc/getKamcoPbctCltrList'
     params = {
