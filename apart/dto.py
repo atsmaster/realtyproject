@@ -7,4 +7,3 @@ class ApartTransactionDto(BaseModel):
     eup_myeon_dong_nm: str
     ri_nm: str
     law_dong_rank: str
-
